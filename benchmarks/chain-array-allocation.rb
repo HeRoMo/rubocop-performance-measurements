@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+# rubocop-performance
+# Performance/ChainArrayAllocation
 # see https://github.com/rubocop-hq/rubocop-performance/blob/master/manual/cops_performance.md#performancechainarrayallocation
 
 require 'benchmark_driver'

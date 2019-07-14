@@ -1,5 +1,9 @@
 # frozen_string_literal: true
 
+# rubocop-performance
+# Performance/Casecmp
+# see https://github.com/rubocop-hq/rubocop-performance/blob/master/manual/cops_performance.md#performancecasecmp
+
 require 'benchmark_driver'
 
 output = :gruff
