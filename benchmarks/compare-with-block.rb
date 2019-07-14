@@ -9,13 +9,6 @@ require 'benchmark_driver'
 output = :gruff
 versions = ['2.3.8', '2.4.6', '2.5.4', '2.6.3', '2.7.0-preview1']
 
-class Elm
-  attr_accessor :foo
-  def initialize(foo)
-    @foo = foo
-  end
-end
-
 Benchmark.driver(output: output) do |x|
   x.rbenv *versions
 
