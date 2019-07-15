@@ -14,12 +14,12 @@ Benchmark.driver(output: output) do |x|
 
   x.prelude <<~RUBY
     def bad_sample
-      array = ["a", "b", "c"]
+      array = ['a', 'b', 'c']
       array.compact.flatten.map { |x| x.downcase }
     end
 
     def good_sample
-      array = ["a", "b", "c"]
+      array = ['a', 'b', 'c']
       array.compact!
       array.flatten!
       array.map! { |x| x.downcase }
