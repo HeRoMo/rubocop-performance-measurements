@@ -13,38 +13,35 @@ Benchmark.driver(output: output) do |x|
   x.rbenv *versions
 
   x.prelude <<~RUBY
+    STR_U = 'ABC'
+    STR_L = 'abc'
+
     def bad_sample1
-      str = 'ABC'
-      str.downcase == 'abc'
+      STR_U.downcase == STR_L
     end
 
     def bad_sample2
-      str = 'abc'
-      str.upcase.eql? 'ABC'
+      STR_L.upcase.eql? STR_U
     end
+
     def bad_sample3
-      str = 'ABC'
-      'abc' == str.downcase
+      STR_L == STR_U.downcase
     end
 
     def bad_sample4
-      str = 'abc'
-      'ABC'.eql? str.upcase
+      STR_U.eql? STR_L.upcase
     end
 
     def bad_sample5
-      str = 'ABC'
-      str.downcase == str.downcase
+      STR_U.downcase == STR_U.downcase
     end
 
     def good_sample1
-      str = 'abc'
-      str.casecmp('ABC').zero?
+      STR_L.casecmp(STR_U).zero?
     end
 
     def good_sample2
-      str = 'ABC'
-      'abc'.casecmp(str).zero?
+      STR_U.casecmp(STR_L).zero?
     end
   RUBY
 
