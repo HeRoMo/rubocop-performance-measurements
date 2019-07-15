@@ -14,47 +14,27 @@ Benchmark.driver(output: output) do |x|
 
   x.prelude <<~RUBY
     REGEX = /bc\Z/
-    END_STR = ''
+    END_STR = 'bc'
 
-    def bad_sample_match1
-      'abc'.match?(/bc\Z/)
-    end
-
-    def bad_sample_match2
+    def bad_sample1
       'abc'.match?(REGEX)
     end
 
-    def bad_sample3
-      'abc' =~ /bc\Z/
-    end
-
-    def bad_sample4
-      'abc'.match(/bc\Z/)
-    end
-
-    def bad_sample5
+    def bad_sample2
       'abc' =~ REGEX
     end
 
-    def bad_sample6
+    def bad_sample3
       'abc'.match(REGEX)
     end
 
-    def end_with1
-      'abc'.end_with?('bc')
-    end
-
-    def end_with2
+    def good_sample
       'abc'.end_with?(END_STR)
     end
   RUBY
 
-  x.report %{ bad_sample_match1 }
-  x.report %{ bad_sample_match2 }
+  x.report %{ bad_sample1 }
+  x.report %{ bad_sample2 }
   x.report %{ bad_sample3 }
-  x.report %{ bad_sample4 }
-  x.report %{ bad_sample5 }
-  x.report %{ bad_sample6 }
-  x.report %{ end_with1 }
-  x.report %{ end_with2 }
+  x.report %{ good_sample }
 end
