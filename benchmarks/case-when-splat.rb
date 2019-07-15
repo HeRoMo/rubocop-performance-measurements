@@ -13,54 +13,48 @@ Benchmark.driver(output: output) do |x|
   x.rbenv *versions
 
   x.prelude <<~RUBY
+    BAR = 2
+    BAZ = 3
+    FOOBAR = 4
+    CONDITION = [1, 2, 3, 4]
+
     def bad_sample1
-      foo = 1
-      bar = 2
-      baz = 3
-      condition = [1, 2, 3, 4]
-      foo = 1
+      foo = BAZ
       case foo
-      when *condition
-        bar
-      when baz
-        foobar
+      when *CONDITION
+        BAR
+      when BAZ
+        FOOBAR
       end
     end
 
     def bad_sample2
-      foo = 1
-      bar = 2
-      baz = 3
+      foo = 5
       case foo
       when *[1, 2, 3, 4]
-        bar
-      when baz
-        foobar
+        BAR
+      when 5
+        FOOBAR
       end
     end
 
     def good_sample1
-      foo = 1
-      bar = 2
-      baz = 3
-      condition = [1, 2, 3, 4]
+      foo = BAZ
       case foo
-      when baz
-        foobar
-      when *condition
-        bar
+      when BAZ
+        FOOBAR
+      when *CONDITION
+        BAR
       end
     end
 
     def good_sample2
-      foo = 1
-      bar = 2
-      baz = 3
+      foo = 5
       case foo
       when 1, 2, 3, 4
-        bar
+        BAR
       when 5
-        baz
+        BAZ
       end
     end
   RUBY
