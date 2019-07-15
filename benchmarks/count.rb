@@ -20,50 +20,51 @@ Benchmark.driver(output: output) do |x|
       end
     end
 
-    ARRAY = [Elm.new(5), Elm.new(4), Elm.new(3), Elm.new(2), Elm.new(5)]
+    NUM_ARRAY = [1, 2, 3]
+    OBJ_ARRAY = [Elm.new(5), Elm.new(4), Elm.new(3), Elm.new(2), Elm.new(5)]
 
     def bad_sample1
-      [1, 2, 3].select { |e| e > 2 }.size
+      NUM_ARRAY.select { |e| e > 2 }.size
     end
 
     def bad_sample2
-      [1, 2, 3].reject { |e| e > 2 }.size
+      NUM_ARRAY.reject { |e| e > 2 }.size
     end
 
     def bad_sample3
-      [1, 2, 3].select { |e| e > 2 }.length
+      NUM_ARRAY.select { |e| e > 2 }.length
     end
 
     def bad_sample4
-      [1, 2, 3].reject { |e| e > 2 }.length
+      NUM_ARRAY.reject { |e| e > 2 }.length
     end
 
     def bad_sample5
-      [1, 2, 3].select { |e| e > 2 }.count { |e| e.odd? }
+      NUM_ARRAY.select { |e| e > 2 }.count { |e| e.odd? }
     end
 
     def bad_sample6
-      [1, 2, 3].reject { |e| e > 2 }.count { |e| e.even? }
+      NUM_ARRAY.reject { |e| e > 2 }.count { |e| e.even? }
     end
 
     def bad_sample7
-      ARRAY.select(&:value).count
+      OBJ_ARRAY.select(&:value).count
     end
 
     def good_sample1
-      [1, 2, 3].count { |e| e > 2 }
+      NUM_ARRAY.count { |e| e > 2 }
     end
 
     def good_sample2
-      [1, 2, 3].count { |e| e < 2 }
+      NUM_ARRAY.count { |e| e < 2 }
     end
 
     def good_sample3
-      [1, 2, 3].count { |e| e > 2 && e.odd? }
+      NUM_ARRAY.count { |e| e > 2 && e.odd? }
     end
 
     def good_sample4
-      [1, 2, 3].count { |e| e < 2 && e.even? }
+      NUM_ARRAY.count { |e| e < 2 && e.even? }
     end
   RUBY
 
