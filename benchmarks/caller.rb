@@ -20,6 +20,7 @@ Benchmark.driver(output: output) do |x|
     def bad_sample2
       caller.first
     end
+
     def bad_sample3
       caller_locations.first
     end
