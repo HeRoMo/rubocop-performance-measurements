@@ -2,6 +2,10 @@
 
 This code set is to mesure [rubocop\-performance](https://github.com/rubocop-hq/rubocop-performance) examples.
 
+## Results
+
+[results](results.md)
+
 ## Requirements
 
 - rbenv
