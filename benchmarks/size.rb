@@ -35,6 +35,10 @@ Benchmark.driver(output: output) do |x|
     def good_sample3
       ARRAY.count { |e| e > 2 }
     end
+
+    def good_sample4
+      HASH.count { |k, v| v > 2 }
+    end
   RUBY
 
   x.report %{ bad_sample1 }
@@ -42,4 +46,5 @@ Benchmark.driver(output: output) do |x|
   x.report %{ good_sample1 }
   x.report %{ good_sample2 }
   x.report %{ good_sample3 }
+  x.report %{ good_sample4 }
 end
